@@ -1,0 +1,76 @@
+body, html {
+    height: auto;
+    min-height: 125%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-size:medium;
+    background-color: lightgoldenrodyellow;
+    font-family: "Cookie";
+    font-size: large;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.center{
+    text-align: center;
+}
+
+#saveButton{
+    margin-top: 5px !important;
+    padding: 5px !important;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.nice-font{
+    font-family: "Cookie";
+}
+
+p {
+    color: red;
+}
+
+#messageFromServer{
+    color: red;
+    font-size: small;
+    font-family: sans-serif;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="/playlist/CSS/stylesLogin.css">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="/playlist/JS/index.js"></script>
+</head>
+<body>
+    
+    <header>
+        <a href="/playlist/PHP/index.php">
+            <h2 class="text-center">Welcome To Playlist.com</h2>
+        </a>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-5"> 
+                <span id="error" style="color: red"></span>
+            </div>
+        </div>
+    </header>
+    
+    <main>                  
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-login">
+                       
+                    <!--panel header of the login and rgister-->
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a href="#" class="active" id="login-form-link">Login</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="#" id="register-form-link">Register</a>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        
+                    <!--panel body of the login and rgister-->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    
+                                    <!-- login form-->
+                                    <form id="login-form" action="/playlist/PHP/API.php" method="post" role="form" style="display: block;" onsubmit="return validateLoginForm()">
+                                        
+                                        <!-- input for username login and p for display error-->
+                                        <div class="form-group">
+                                            <input type="text" name="username" id="usernameLogin" tabindex="1" class="form-control" placeholder="Username">
+                                            <p id ="errorUsernameLogin" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- input for password login and p for display error-->
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="passwordLogin" tabindex="2" class="form-control" placeholder="Password">
+                                            <p id ="errorPasswordLogin" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- radio button for remembr me-->
+                                        <div class="form-group text-center">
+                                            <input type="checkbox" tabindex="3" class="" name="remember" id="rememberLogin">
+                                            <label for="remember"> Remember Me</label>
+                                        </div>
+
+                                        <div class="row"><br></div>
+                                            
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="loginSubmit" id="loginSubmit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- input for sending command to the API-->
+                                        <input type="hidden" name="command" value="login">
+                                        
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="text-center">
+                                                        <a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                    <!-- registration form-->
+                                    <form id="register-form" action="/playlist/PHP/API.php" method="post" role="form" style="display: none;" onsubmit="return validateRegisterForm()">
+                                        
+                                        <!-- input for firstname login and p for display error-->
+                                        <div class="form-group">					
+                                            <input type="text" name="firstName" id="firstNameRegister" tabindex="1" class="form-control" placeholder="First Name" value="">				
+                                            <p id ="errorFirstnameRegister" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- input for lastname login and p for display error-->
+                                        <div class="form-group">					
+                                            <input type="text" name="lastName" id="lastNameRegister" tabindex="1" class="form-control" placeholder="Last Name" value="">
+                                            <p id ="errorLastnameRegister" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- input for username login and p for display error-->
+                                        <div class="form-group">
+                                            <input type="text" name="username" id="usernameRegister" tabindex="1" class="form-control" placeholder="Username" value="">
+                                            <p id ="errorUsernameRegister" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- input for password login and p for display error-->
+                                        <div class="form-group">									
+                                            <input type="password" name="password" id="passwordRegister" tabindex="2" class="form-control" placeholder="Password">
+                                            <p id ="errorPasswordRegister" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- input for confirm password login and p for display error-->
+                                        <div class="form-group">
+                                            <input type="password" name="confirmPassword" id="confirm-passwordRegister" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                            <p id ="errorConfirmPassword" style="color: red"></p>
+                                        </div>
+                                        
+                                        <!-- input for sending command to the API-->
+                                        <input type="hidden" name="command" value="addUser">
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="registerSubmit" id="registerSubmit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- all rights reserved sign-->
+    <footer>
+        <div><br><br></div>
+        <div>
+            &copy;Playlist.com
+        </div>
+    </footer>
+    
+    <!-- script for display servers error on page - if there are any-->
+    <script>
+        var errorRegister = document.getElementById("error");
+        if(location.search.indexOf("error=") > 0) {
+            var error = decodeURI(location.search.split("=")[1]);
+            errorRegister.innerHTML = error;
+        }
+    </script>
+</body>
+</html>
